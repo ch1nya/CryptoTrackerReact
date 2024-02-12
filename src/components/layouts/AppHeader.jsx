@@ -21,7 +21,7 @@ export function AppHeader() {
     const [select, setSelect] = useState(false);
     const [modal, setModal] = useState(false);
     const [coin, setCoin] = useState(null);
-    const [drawer, setDrawer] = useState(false);
+    const [drawer, setDrawer] = useState(true);
 
     const {crypto} = useCrypto()
     const handleSelect = (value) => {
@@ -76,10 +76,13 @@ export function AppHeader() {
             </Modal>
         <Drawer
                 width={700}
-                title="A Drawer"
+                title="Add Assets"
                 onClose={()=>setDrawer(false)}
-                open={drawer}>
-            <AddAssetForm/>
+                open={drawer}
+                destroyOnClose={true}
+
+        >
+            <AddAssetForm onClose={()=>setDrawer(false)}/>
         </Drawer>
         </Layout.Header>
     )
